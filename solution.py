@@ -11,4 +11,10 @@ def solution(x_success: int,
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    p1 = x_success / x_cnt
+    p2 = y_success / y_cnt
+    p_combined = (x_success + y_success) / (x_cnt + y_cnt)
+    z = (p1 - p2) / np.sqrt(p_combined * (1 - p_combined) * (1 / x_cnt + 1 / y_cnt))
+    p_value = 2 * (1 - norm.cdf(abs(z)))
+    alpha = 0.04
+    return  p_value < alpha # Ваш ответ, True или False
